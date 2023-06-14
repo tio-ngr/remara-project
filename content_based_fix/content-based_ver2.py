@@ -8,7 +8,7 @@ def load_file():
 
 def recommendation(judul, k = 10):
     similarity_data = load_file()
-    data = pd.read_csv('./fix_dataset/fix_cleaned_combined_dataset.csv')
+    data = pd.read_csv('../fix_dataset/fix_cleaned_combined_dataset.csv')
     items = data[['Title']]#, 'Ingredients'#, 'Steps', 'Loves']]
 
     index = similarity_data.loc[:, judul].to_numpy().argpartition(range(-1, -k, -1))
