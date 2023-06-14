@@ -52,12 +52,16 @@ def predict():
     if prediction_accuracy == "Correct":
         makanan = 'Telur'
     elif prediction_accuracy == "Incorrect":
-        makanan = 'Bukan Telur'
+        makanan = 'Tempe'
+    elif prediction_accuracy == "Not Both":
+        makanan = 'Tidak Keduanya'
 
     # statusTest
     if makanan =="Telur":
         statusTest = "LULUS"
-    if makanan =="Bukan Telur":
+    elif makanan =="Tidak Keduanya" or makanan =="Tempe":
+        statusTest = "TIDAK LULUS"
+    else:
         statusTest = "TIDAK LULUS"
 
     img.close()
