@@ -1,15 +1,13 @@
 import requests
 from flask import Flask, render_template, request, jsonify
-# import matplotlib.pyplot as plt
 import numpy as np
-# from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 from PIL import Image
 
 app = Flask(__name__)
-# app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
 model= load_model('model_cv.h5')
-# ITEMS = ['telur,tempe']
+
 
 @app.route('/')
 def hello(): 
@@ -23,11 +21,6 @@ def predict():
     # # Prepare variables for accuracy calculation
     total_predictions = 0
     correct_predictions = 0
-
-    # # Perform prediction for the uploaded file
-    # img = image.load_img(uploaded_file, target_size=(200, 200))
-    # x = image.img_to_array(img)
-    # plt.imshow(x/255.)
     img = Image.open(uploaded_file).resize((200,200))
     x = np.array(img)
     x = np.expand_dims(x, axis=0)
@@ -55,13 +48,21 @@ def predict():
     else:
         prediction_accuracy = "Not Both"
 
-    # Calculate accuracy
-    accuracy = (correct_predictions / total_predictions) * 100
-    img.close()
-    response_obj = { 'prediction': prediction, 'accuracy': str(round(accuracy, 2)), 'accuracy_status': prediction_accuracy }
-    return jsonify(response_obj)
+    # prediction bahan
+    if prediction_accuracy == "Correct":
+        makanan = 'Telur'
+    elif prediction_accuracy == "Incorrect":
+        makanan = 'Bukan Telur'
 
-    # return render_template('result.html', prediction=prediction, accuracy=round(accuracy, 2), accuracy_status=prediction_accuracy)
+    # statusTest
+    if makanan =="Telur":
+        statusTest = "LULUS"
+    if makanan =="Bukan Telur":
+        statusTest = "TIDAK LULUS"
+
+    img.close()
+    response_obj = { 'prediction': makanan, 'Status': statusTest }
+    return jsonify(response_obj)
 
 @app.route('/')
 def home():
@@ -69,7 +70,3 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-# if __name__ == '__main__':
-#     app.run(debug=False, host='0.0.0.0')
