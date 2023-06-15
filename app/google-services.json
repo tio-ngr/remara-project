@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "951907228282",
+    "project_id": "capstone-project-remara",
+    "storage_bucket": "capstone-project-remara.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951907228282:android:bf7bfe9e2ed4d061be39c3",
+        "android_client_info": {
+          "package_name": "com.capstone.remara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951907228282-jb0fcidbg1hdv4q3lajtb8nh1dk42sth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAszSQyHp-Zq9w7yGbauVC3Pu0VnMsAefI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951907228282-jb0fcidbg1hdv4q3lajtb8nh1dk42sth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
